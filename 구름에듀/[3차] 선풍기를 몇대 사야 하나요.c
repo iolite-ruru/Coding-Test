@@ -8,7 +8,9 @@ int solution(int k, int student[], int student_len) {
         student[i] -= 4*k;
         if(student[i] <= 0)
             continue;
-        answer += (student[i] + k - 1) / k;
+        // +K: 아래 연산에서 나머지가 생기는 경우를 막기 위함
+        // -1: 나머지가 발생하지 않을 때, 발생하는 연산 오류를 막기 위함
+        answer += (student[i] + k - 1) / k; //**주의**
     }
     return answer;
 }
