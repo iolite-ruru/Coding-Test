@@ -43,8 +43,8 @@ char* solution(char* s, int k) {
     for (int start_idx = 0; start_idx < length; start_idx++) {
         for (int cnt = 1; cnt < length - start_idx + 1; cnt++) {
             char* sub_s = substr(s, start_idx, cnt);
-            if (func_b(sub_s)) {
-                if (func_a(palindromes, palindromes_cnt, sub_s) == false)
+            if (func_b(sub_s)) { //팰린드롬인지 확인
+                if (func_a(palindromes, palindromes_cnt, sub_s) == false) //새로운 팰린드롬이라면
                     palindromes[palindromes_cnt++] = sub_s;
             }
         }
