@@ -7,7 +7,6 @@ char* vowels[5] = {"A", "E", "I", "O", "U"};
 char* words[3906];
 int words_idx = 0;
 
-
 void create_words(int lev, char* str) {
     words[words_idx++] = str;
     for (int i = 0; i < 5; i++) {
@@ -15,7 +14,7 @@ void create_words(int lev, char* str) {
             char* new_str = (char*)malloc(sizeof(char)*(lev+2));
             strcpy(new_str, str);
             strcat(new_str, vowels[i]);
-            create_words(lev, new_str);
+            create_words(words_idx, new_str);
         }
     }
 }
