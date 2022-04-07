@@ -1,12 +1,18 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
+
+bool compare(){
+    
+}
 
 vector<int> solution(int N, vector<int> stages) {
     vector<int> answer;
     vector<double> rate;
+    
     for(int i=1; i<=N; i++){
         int notSuccess = 0;
         int arrival = 0;
@@ -19,26 +25,37 @@ vector<int> solution(int N, vector<int> stages) {
                 arrival++;
             }
         }
-        //if(arrival == 0) break;
+        
         answer.push_back(i);
         rate.push_back((double)notSuccess / arrival);
-        cout<<rate[i-1]<<endl;
     }
 
+    //정렬->sort()함수 쓰면???
+    //sort()
+    for(int i=0 ; i<N; i++){
+        cout<<rate[i]<<" ";
+    }
+    cout<<endl;
+    
     for(int i=0 ; i<N-1; i++){
         for(int j=i+1; j<N; j++){
             if(rate[j] > rate[i]){
-                double dTemp = rate[i];
-                rate[i] = rate[j];
-                rate[j] = dTemp;
+                int dTemp = rate[j];
+                int iTemp = answer[j];
                 
-                int iTemp = answer[i];
-                answer[i] = answer[j];
-                answer[j] = iTemp;
+                for(int k=N-1; k>i; k--){
+                    rate[k] = rate[k-1];
+                    answer[k] = answer[k-1];
+                }
                 
+                rate[i] = dTemp;
+                answer[i] = iTemp;
+                break;
             }
         }
     }
+   
+    for(int i=0 ; i<N; i++) cout<<answer[i]<<endl;
     
     return answer;
 }
