@@ -15,13 +15,13 @@ int solution(string s) {
         if(s[i]>='a'&&s[i]<='z'){
             string temp;
             bool bFor = true;
-            for(int j=i; s[j]>='a'&&s[j]<='z'; j++){
+            for(int j=1; s[j]>='a'&&s[j]<='z'; j++){
                 if(!bFor) break;
                 temp = s.substr(i, j);
                 for(int k=0; k<10; k++){
                     if(temp.compare(number[k]) == 0){
                         strAnswer.push_back(k);
-                        i = j;
+                        //i = j;
                         bFor = false;
                         break;
                     }
